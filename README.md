@@ -1,7 +1,7 @@
 # Tubes-Pengantar-Game
 
 Game design:
--rizal
+-rizal 201910370311195
 -caca
 
 Game  programming:
