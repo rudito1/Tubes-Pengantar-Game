@@ -10,5 +10,5 @@ Game  programming:
 -ibad
 
 Visual Designer:
--rudi 
--andika
+-rudi 201910370311168
+-andika 201910370311164
