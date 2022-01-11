@@ -2,12 +2,12 @@
 
 Game design:
 -rizal 201910370311195
--caca
+-caca 201910370311171
 
 Game  programming:
 -Irwansyah Andika Purnama 201910370311160
--ivan
--ibad
+-ivan 201910370311197
+-ibad 201910370311159
 
 Visual Designer:
 -rudi 201910370311168
