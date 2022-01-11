@@ -14,6 +14,9 @@ public class idleScript : MonoBehaviour
     private int jumpcount;
     private int jumpvalue = 2;
     public bool isGrounded;
+    public bool isAttack = false;
+    private int atakcount;
+    private int atakvalue = 2;
 
     public Animator anime;
 
@@ -28,6 +31,7 @@ public class idleScript : MonoBehaviour
         {
             isGrounded = true;
         }
+        
     }
 
     // Update is called once per frame
@@ -36,14 +40,15 @@ public class idleScript : MonoBehaviour
         jalan.x = Input.GetAxisRaw("Horizontal");
         transform.position += jalan * speed * Time.deltaTime;
 
-        if(Input.GetKeyDown(KeyCode.UpArrow)&& jumpcount > 0)
+        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) && jumpcount > 0)
         {
-            lompat();
+            
             anime.SetBool("lompat", true);
             if (jumpcount == 1)
             {
                 anime.SetBool("hlompat", true);
             }
+            lompat();
         }
 
         if (isGrounded)
@@ -52,6 +57,39 @@ public class idleScript : MonoBehaviour
             anime.SetBool("lompat", false);
             anime.SetBool("hlompat", false);
         }
+
+        if (Input.GetKeyDown(KeyCode.X) && atakcount > 0)
+        {
+            isAttack = true;
+            anime.SetBool("atk", true);
+            
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                atakcount--;
+                print(atakcount);
+                if (atakcount == 1)
+                {
+                    anime.SetBool("atk", false);
+                    anime.SetBool("atk2", true);
+
+                }
+            }
+            
+            
+        }
+        else
+        {
+            isAttack = false;  
+        }
+        
+
+        if (!isAttack)
+        {
+            atakcount = atakvalue;
+            
+            anime.SetBool("atk2", false);
+        }
+
 
         if (jalan != Vector3.zero)
         {
@@ -64,7 +102,7 @@ public class idleScript : MonoBehaviour
 
         if (jalan == Vector3.left)
         {
-            transform.rotation = Quaternion.Euler(0,180,0);
+            transform.rotation = Quaternion.Euler(10,180,0);
         }
         else if(jalan == Vector3.right)
         {
@@ -78,4 +116,5 @@ public class idleScript : MonoBehaviour
         isGrounded = false;
         jumpcount--;
     }
+
 }
